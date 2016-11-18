@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <integer name="small">1</integer>
+  <integer name="normal">2</integer>
+  <integer name="large">3</integer>
+  <integer name="extra_large">4</integer>
+</resources>

@@ -22,7 +22,7 @@
         android:layout_width="210dp"
         android:layout_height="140dp"
         fresco:placeholderImage="@drawable/place_holder"
-        fresco:placeholderImageScaleType="centerCrop"
+        fresco:placeholderImageScaleType="fitCenter"
         android:layout_gravity="center"
         android:paddingBottom="10dp"/>
 
