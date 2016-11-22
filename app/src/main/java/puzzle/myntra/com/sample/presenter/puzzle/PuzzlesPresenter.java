@@ -9,6 +9,7 @@ import puzzle.myntra.com.sample.model.entity.PhotoEntity;
 import puzzle.myntra.com.sample.model.entity.PhotoListEntity;
 import puzzle.myntra.com.sample.model.manager.FlickManager;
 import puzzle.myntra.com.sample.model.manager.HttpErrorManager;
+import puzzle.myntra.com.sample.util.Constants;
 import rx.Subscription;
 
 public class PuzzlesPresenter extends BasePresenter {
@@ -17,13 +18,14 @@ public class PuzzlesPresenter extends BasePresenter {
   private final String SAVE_PAGE_STATE = "SAVE_PAGE_STATE";
   private final PuzzlesView view;
   private final FlickManager flickManager;
+  private int gridSize = Constants.GRID_COLS * Constants.GRID_COLS;
 
   @VisibleForTesting PageState pageState;
 
   enum PageState {
     PROGRESS,
-    SHOWING_NEWS,
-    ERROR_NO_NEWS,
+    SHOWING_IMAGES,
+    ERROR_NO_IMAGES,
     ERROR_NO_NETWORK,
     ERROR_SOMETHING_WENT_WRONG
   }
@@ -44,7 +46,7 @@ public class PuzzlesPresenter extends BasePresenter {
 
   @Override public void onViewCreated(boolean isNewLaunch) {
     view.setupNewsView();
-    setPageState(PageState.SHOWING_NEWS);
+    setPageState(PageState.SHOWING_IMAGES);
 
     if (isNewLaunch) {
       showProgress();
@@ -58,11 +60,18 @@ public class PuzzlesPresenter extends BasePresenter {
   private void onNewsListLoaded(PhotoListEntity photoListEntity) {
     if (photoListEntity == null || photoListEntity.getPhotoEntities() == null
         || photoListEntity.getPhotoEntities().isEmpty()) {
-      showNoNewsAvailableError();
+      showNoImagesAvailableError();
       return;
     }
 
-    showNewsList(photoListEntity.getPhotoEntities());
+    if(photoListEntity.getPhotoEntities().size() > gridSize) {
+      showNewsList(photoListEntity.getPhotoEntities().subList(0, gridSize-1));
+    } else if(photoListEntity.getPhotoEntities().size() == gridSize) {
+      showNewsList(photoListEntity.getPhotoEntities());
+    } else {
+      //TODO: maybe retry & concat results
+      showNoImagesAvailableError();
+    }
   }
 
   private void handleNewsLoadingErrors(Throwable e) {
@@ -73,7 +82,7 @@ public class PuzzlesPresenter extends BasePresenter {
     if (isErrorHandled) {
       view.hideProgress();
       if (!view.isNewsListAvailable()) {
-        showNoNewsAvailableError();
+        showNoImagesAvailableError();
       }
       return;
     }
@@ -89,14 +98,14 @@ public class PuzzlesPresenter extends BasePresenter {
   }
 
   private void showNewsList(List<PhotoEntity> newsEntities) {
-    setPageState(PageState.SHOWING_NEWS);
+    setPageState(PageState.SHOWING_IMAGES);
     view.showNewsList(newsEntities);
     view.hideError();
     view.hideProgress();
   }
 
-  private void showNoNewsAvailableError() {
-    setPageState(PageState.ERROR_NO_NEWS);
+  private void showNoImagesAvailableError() {
+    setPageState(PageState.ERROR_NO_IMAGES);
     view.showNoNewsAvailableError();
     view.hideProgress();
     view.hideNewsList();
@@ -117,10 +126,10 @@ public class PuzzlesPresenter extends BasePresenter {
       case PROGRESS:
         showProgress();
         break;
-      case ERROR_NO_NEWS:
-        showNoNewsAvailableError();
+      case ERROR_NO_IMAGES:
+        showNoImagesAvailableError();
         break;
-      case SHOWING_NEWS:
+      case SHOWING_IMAGES:
         break;
     }
   }

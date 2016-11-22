@@ -70,8 +70,8 @@ public class GsonConverterFactory extends Converter.Factory {
 
     @Override public T convert(ResponseBody value) throws IOException {
       String response = value.string();
-      response =
-          response.replaceAll("\"\"", NULL_JSON);
+      //INFO: all the magic
+      response = response.replaceAll("\"\"", NULL_JSON);
       try {
         return adapter.fromJson(response);
       } finally {

@@ -1,13 +1,15 @@
 package puzzle.myntra.com.sample.di.flickr;
 
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import dagger.Module;
 import dagger.Provides;
+import puzzle.myntra.com.sample.ImageGridAdapter;
 import puzzle.myntra.com.sample.MainActivity;
-import puzzle.myntra.com.sample.NewsListAdapter;
 import puzzle.myntra.com.sample.di.ActivityScope;
 import puzzle.myntra.com.sample.model.manager.FlickManager;
-import puzzle.myntra.com.sample.presenter.news.NewsPresenter;
+import puzzle.myntra.com.sample.presenter.puzzle.PuzzlesPresenter;
+import puzzle.myntra.com.sample.util.Constants;
 
 @Module public class FlickrModule {
 
@@ -17,15 +19,19 @@ import puzzle.myntra.com.sample.presenter.news.NewsPresenter;
     this.mainActivity = mainActivity;
   }
 
-  @ActivityScope @Provides NewsPresenter provideNewsPresenter(FlickManager flickManager) {
-    return new NewsPresenter(mainActivity, flickManager);
+  @ActivityScope @Provides PuzzlesPresenter provideNewsPresenter(FlickManager flickManager) {
+    return new PuzzlesPresenter(mainActivity, flickManager);
   }
 
-  @ActivityScope @Provides NewsListAdapter provideContactsAdapter() {
-    return new NewsListAdapter();
+  @ActivityScope @Provides ImageGridAdapter provideImagesAdapter() {
+    return new ImageGridAdapter();
   }
 
   @ActivityScope @Provides LinearLayoutManager provideLinearLayoutManager() {
     return new LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false);
+  }
+
+  @ActivityScope @Provides GridLayoutManager provideGridLayoutManager() {
+    return new GridLayoutManager(mainActivity, Constants.GRID_COLS, LinearLayoutManager.VERTICAL, false);
   }
 }

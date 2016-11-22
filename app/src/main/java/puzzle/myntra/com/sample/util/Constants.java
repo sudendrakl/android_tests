@@ -6,9 +6,11 @@ package puzzle.myntra.com.sample.util;
 
 public interface Constants {
   interface IntentExtras {
-    String NewsListItem = "news_list_item_click_position";
+    String ListItem = "list_item_click_position";
   }
   interface BroadcastEvents {
-    String NewsItemListClick = "news_item_click";
+    String ItemListClick = "item_click";
   }
+
+  int GRID_COLS = 3;
 }

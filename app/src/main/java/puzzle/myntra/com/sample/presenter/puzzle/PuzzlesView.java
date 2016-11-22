@@ -25,4 +25,9 @@ public interface PuzzlesView extends BaseView {
 
   void showHttpError(int errorBody);
 
+  void startGame();
+
+  void iGiveUp();
+
+  void reset();
 }

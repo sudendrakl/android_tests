@@ -3,11 +3,18 @@ package puzzle.myntra.com.sample.model;
 import puzzle.myntra.com.sample.model.entity.PhotoListEntity;
 import retrofit2.Response;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 import rx.Observable;
 
 public interface FlickrApi {
 
-  //"http://www.mocky.io/v2/573c89f31100004a1daa8adb"
   //https://api.flickr.com/services/feeds/photos_public.gne?format=json&tags=cat,cute&tagmode=all&nojsoncallback=1
-  @GET("v2/573c89f31100004a1daa8adb") Observable<Response<PhotoListEntity>> getNews();
+  @GET("feeds/photos_public.gne") Observable<Response<PhotoListEntity>> getNews(
+                                                                                    @Query("format") String format,
+                                                                                    @Query("tags") String tags,
+                                                                                    @Query("tagmode") String tagmode,
+                                                                                    @Query("nojsoncallback") int nojsoncallback
+                                                                                );
+
+
 }

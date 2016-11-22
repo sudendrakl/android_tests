@@ -9,8 +9,8 @@ import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
 import puzzle.myntra.com.sample.NewsApplication;
-import puzzle.myntra.com.sample.model.NewsApi;
-import puzzle.myntra.com.sample.model.manager.NewsManager;
+import puzzle.myntra.com.sample.model.FlickrApi;
+import puzzle.myntra.com.sample.model.manager.FlickManager;
 import puzzle.myntra.com.sample.util.GsonConverterFactory;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -20,14 +20,14 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 @Module public class AppModule {
 
   private final NewsApplication application;
-  private static final String BASE_API_URL = "http://www.mocky.io/";
+  private static final String BASE_API_URL = "https://api.flickr.com/";
 
   public AppModule(NewsApplication application) {
     this.application = application;
   }
 
-  @Provides @Singleton public NewsApi provideNewsApiService(Retrofit retrofit) {
-    return retrofit.create(NewsApi.class);
+  @Provides @Singleton public FlickrApi provideFlickrApiService(Retrofit retrofit) {
+    return retrofit.create(FlickrApi.class);
   }
 
   @Provides @Singleton public Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
@@ -53,11 +53,12 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
         .create();
   }
 
+  @Provides @Singleton public FlickManager provideFlickrManager(FlickrApi flickrApi, ConnectivityManager connectivityManager) {
+    return new FlickManager(flickrApi, connectivityManager);
+  }
+
   @Provides @Singleton public ConnectivityManager provideConnectivityManager() {
     return (ConnectivityManager) application.getSystemService(Context.CONNECTIVITY_SERVICE);
   }
 
-  @Provides @Singleton public NewsManager provideNewsManager(NewsApi newsApi) {
-    return new NewsManager(newsApi);
-  }
 }

@@ -17,7 +17,7 @@ import puzzle.myntra.com.sample.model.entity.MediaEntity;
 import puzzle.myntra.com.sample.model.entity.PhotoEntity;
 import puzzle.myntra.com.sample.util.Constants;
 
-public class ImageGridAdapter extends RecyclerView.Adapter<ImageGridAdapter.NewsViewHolder> {
+public class ImageGridAdapter extends RecyclerView.Adapter<ImageGridAdapter.RVHolder> {
 
   private ArrayList<PhotoEntity> list = new ArrayList<>();
 
@@ -25,22 +25,17 @@ public class ImageGridAdapter extends RecyclerView.Adapter<ImageGridAdapter.News
     super();
   }
 
-  @Override public NewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new NewsViewHolder(
-        LayoutInflater.from(parent.getContext()).inflate(puzzle.myntra.com.sample.R.layout.list_item_news, parent, false));
+  @Override public RVHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    return new RVHolder(
+        LayoutInflater.from(parent.getContext()).inflate(puzzle.myntra.com.sample.R.layout.list_item, parent, false));
   }
 
-  @Override public void onBindViewHolder(NewsViewHolder viewHolder, int position) {
+  @Override public void onBindViewHolder(RVHolder viewHolder, int position) {
 
     PhotoEntity newsEntity = list.get(position);
-    List<MediaEntity> mediaEntityList = newsEntity.getMediaEntities();
-    String thumbnailURL = "";
-    if (mediaEntityList != null && mediaEntityList.size() > 0) {
-      MediaEntity mediaEntity = mediaEntityList.get(0); //match screen size by ImageSizeEnum
-      thumbnailURL = mediaEntity.getUrl();
-    }
+    MediaEntity mediaEntity = newsEntity.getMedia();
+    String thumbnailURL = mediaEntity.getUrl();
 
-    viewHolder.progress.setText(newsEntity.getTitle());
     DraweeController draweeController = Fresco.newDraweeControllerBuilder()
         .setImageRequest(ImageRequest.fromUri(Uri.parse(thumbnailURL)))
         .setOldController(viewHolder.imageView.getController())
@@ -65,17 +60,17 @@ public class ImageGridAdapter extends RecyclerView.Adapter<ImageGridAdapter.News
     this.list.addAll(list);
   }
 
-  static class NewsViewHolder extends RecyclerView.ViewHolder {
+  static class RVHolder extends RecyclerView.ViewHolder {
     View progress;
     DraweeView imageView;
 
-    public NewsViewHolder(View itemView) {
+    public RVHolder(View itemView) {
       super(itemView);
       progress = itemView.findViewById(R.id.progress);
       imageView = (DraweeView) itemView.findViewById(R.id.news_item_image);
       itemView.setOnClickListener(v -> {
-        Intent intent = new Intent(Constants.BroadcastEvents.NewsItemListClick);
-        intent.putExtra(Constants.IntentExtras.NewsListItem, getAdapterPosition());
+        Intent intent = new Intent(Constants.BroadcastEvents.ItemListClick);
+        intent.putExtra(Constants.IntentExtras.ListItem, getAdapterPosition());
         LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intent);
       });
     }

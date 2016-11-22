@@ -3,8 +3,8 @@ package puzzle.myntra.com.sample.di;
 import android.app.Application;
 import puzzle.myntra.com.sample.MainActivity;
 import puzzle.myntra.com.sample.NewsApplication;
-import puzzle.myntra.com.sample.di.news.DaggerNewsComponent;
-import puzzle.myntra.com.sample.di.news.NewsModule;
+import puzzle.myntra.com.sample.di.flickr.DaggerFlickrComponent;
+import puzzle.myntra.com.sample.di.flickr.FlickrModule;
 
 public class DaggerInjector implements Injector {
   private AppComponent appComponent;
@@ -16,9 +16,9 @@ public class DaggerInjector implements Injector {
   }
 
   @Override public void inject(MainActivity mainActivity) {
-    DaggerNewsComponent.builder()
+    DaggerFlickrComponent.builder()
         .appComponent(appComponent)
-        .newsModule(new NewsModule(mainActivity))
+        .flickrModule(new FlickrModule(mainActivity))
         .build()
         .inject(mainActivity);
   }
