@@ -1,4 +1,4 @@
-package puzzle.myntra.com.sample;
+package puzzle.myntra.com.sample.ui;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +13,7 @@ import com.facebook.drawee.view.DraweeView;
 import com.facebook.imagepipeline.request.ImageRequest;
 import java.util.ArrayList;
 import java.util.List;
+import puzzle.myntra.com.sample.R;
 import puzzle.myntra.com.sample.model.entity.MediaEntity;
 import puzzle.myntra.com.sample.model.entity.PhotoEntity;
 import puzzle.myntra.com.sample.util.Constants;

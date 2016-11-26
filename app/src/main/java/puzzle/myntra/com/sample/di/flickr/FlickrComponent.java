@@ -1,7 +1,7 @@
 package puzzle.myntra.com.sample.di.flickr;
 
 import dagger.Component;
-import puzzle.myntra.com.sample.MainActivity;
+import puzzle.myntra.com.sample.ui.MainActivity;
 import puzzle.myntra.com.sample.di.ActivityScope;
 import puzzle.myntra.com.sample.di.AppComponent;
 

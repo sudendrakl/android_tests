@@ -1,4 +1,4 @@
-package puzzle.myntra.com.sample;
+package puzzle.myntra.com.sample.ui;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -22,6 +22,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
+import puzzle.myntra.com.sample.R;
 import puzzle.myntra.com.sample.base.BaseActivity;
 import puzzle.myntra.com.sample.di.Injector;
 import puzzle.myntra.com.sample.model.entity.PhotoEntity;
