@@ -9,7 +9,7 @@ import rx.Observable;
 public interface FlickrApi {
 
   //https://api.flickr.com/services/feeds/photos_public.gne?format=json&tags=cat,cute&tagmode=all&nojsoncallback=1
-  @GET("feeds/photos_public.gne") Observable<Response<PhotoListEntity>> getNews(
+  @GET("services/feeds/photos_public.gne") Observable<Response<PhotoListEntity>> getImagesFeed(
                                                                                     @Query("format") String format,
                                                                                     @Query("tags") String tags,
                                                                                     @Query("tagmode") String tagmode,

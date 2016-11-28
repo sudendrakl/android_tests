@@ -14,8 +14,9 @@ class ValidateHTTPResponse<T> implements Func1<Response<T>, T> {
   }
 
   @Override public T call(Response<T> response) {
+    //check common api error's....401,404....
     if(!connectivityManager.getActiveNetworkInfo().isConnected())
-      throw Exceptions.propagate(new HttpException(4, null));
+      throw Exceptions.propagate(new HttpException(-1, null));
 
     if (response.isSuccessful()) {
       return response.body();
@@ -23,4 +24,6 @@ class ValidateHTTPResponse<T> implements Func1<Response<T>, T> {
 
     throw Exceptions.propagate(new HttpException(response.code(), response.errorBody()));
   }
+
+
 }

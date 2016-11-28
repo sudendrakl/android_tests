@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:fresco="http://schemas.android.com/apk/res-auto"
-              android:orientation="horizontal"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content">
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/activity_vertical_margin"
+    >
 
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:indeterminate="true"
-        android:layout_gravity="center"
-        />
-
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/news_item_image"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        fresco:placeholderImage="@drawable/place_holder"
-        fresco:placeholderImageScaleType="centerCrop" />
+  <com.facebook.drawee.view.SimpleDraweeView
+      android:id="@+id/item_image"
+      android:layout_width="75dp"
+      android:layout_height="75dp"
+      fresco:placeholderImage="@drawable/place_holder"
+      fresco:placeholderImageScaleType="centerCrop"
+      />
+  <com.facebook.drawee.view.SimpleDraweeView
+      android:id="@+id/item_flip"
+      android:layout_width="75dp"
+      android:layout_height="75dp"
+      fresco:placeholderImage="@drawable/place_holder"
+      fresco:placeholderImageScaleType="centerCrop"
+      android:visibility="invisible"
+      />
 </FrameLayout>

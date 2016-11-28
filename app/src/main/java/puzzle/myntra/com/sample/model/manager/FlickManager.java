@@ -19,11 +19,26 @@ public class FlickManager {
     this.connectivityManager = connectivityManager;
   }
 
-  @NonNull public Observable<PhotoListEntity> getApiNewsObservable() {
+  private String TAGS1[] = { "cat", "kitty", "purr" };
+  private String TAGS2[] = { "cute", "sleep", "evil" };
+  private String TAG_MODE[] = { "all", "any" };
+
+  @NonNull public Observable<PhotoListEntity> getApiFlickrImagesObservable() {
     // format=json&tags=cat,cute&tagmode=all&nojsoncallback=1
-    return flickrApi.getNews("json", "cat,cute", "all", 1)
+    return flickrApi.getImagesFeed("json", getMeTags(), getMeTagMode(), 1)
         .map(new ValidateHTTPResponse<>(connectivityManager))
         .compose(observable -> observable.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread(), true));
+  }
+
+  private String getMeTags() {
+    return String.format("%s,%s,%s,%s", TAGS1[Math.abs((int) System.nanoTime() % TAGS1.length)],
+        TAGS1[Math.abs((int) System.nanoTime() % TAGS1.length)],
+        TAGS2[Math.abs((int) System.nanoTime() % TAGS2.length)],
+        TAGS2[Math.abs((int) System.nanoTime() % TAGS2.length)]);
+  }
+
+  private String getMeTagMode() {
+    return TAG_MODE[(int) (System.currentTimeMillis() % 2)];
   }
 }

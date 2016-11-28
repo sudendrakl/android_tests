@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">Image Scramble</string>
+  <string name="app_name">Image Scramble</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+  <string name="hello_world">Hello world!</string>
+  <string name="action_settings">Settings</string>
+  <string name="title_activity_main">MainActivity</string>
+  <string name="intro">\nScramble will show random pictures\nYou get 15sec to remember them\nFind the hidden picture from hint\n\nClick \'start\' to begin the game\n</string>
 </resources>

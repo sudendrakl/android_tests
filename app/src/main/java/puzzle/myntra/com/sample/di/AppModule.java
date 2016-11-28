@@ -8,9 +8,10 @@ import com.google.gson.GsonBuilder;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
-import puzzle.myntra.com.sample.NewsApplication;
+import puzzle.myntra.com.sample.PuzzleApplication;
 import puzzle.myntra.com.sample.model.FlickrApi;
 import puzzle.myntra.com.sample.model.manager.FlickManager;
+import puzzle.myntra.com.sample.model.manager.HttpErrorManager;
 import puzzle.myntra.com.sample.util.GsonConverterFactory;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -19,10 +20,10 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 
 @Module public class AppModule {
 
-  private final NewsApplication application;
+  private final PuzzleApplication application;
   private static final String BASE_API_URL = "https://api.flickr.com/";
 
-  public AppModule(NewsApplication application) {
+  public AppModule(PuzzleApplication application) {
     this.application = application;
   }
 
@@ -55,6 +56,10 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 
   @Provides @Singleton public FlickManager provideFlickrManager(FlickrApi flickrApi, ConnectivityManager connectivityManager) {
     return new FlickManager(flickrApi, connectivityManager);
+  }
+
+  @Provides @Singleton public HttpErrorManager providesHttpErrorManager(ConnectivityManager connectivityManager) {
+    return new HttpErrorManager(connectivityManager);
   }
 
   @Provides @Singleton public ConnectivityManager provideConnectivityManager() {

@@ -4,4 +4,6 @@
   <integer name="normal">2</integer>
   <integer name="large">3</integer>
   <integer name="extra_large">4</integer>
+  <integer name="card_flip_time_full">300</integer>
+  <integer name="card_flip_time_half">150</integer>
 </resources>

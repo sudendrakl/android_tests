@@ -1,5 +1,6 @@
 package puzzle.myntra.com.sample.model.manager;
 
+import android.net.ConnectivityManager;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import puzzle.myntra.com.sample.base.BaseView;
@@ -7,9 +8,26 @@ import puzzle.myntra.com.sample.model.exceptions.HttpException;
 
 public class HttpErrorManager {
 
-  public static boolean handleErrors(BaseView view, Throwable e) {
+  private ConnectivityManager connectivityManager;
+
+  public HttpErrorManager(ConnectivityManager connectivityManager) {
+    this.connectivityManager = connectivityManager;
+  }
+
+  public boolean handleErrors(BaseView view, Throwable e) {
+    boolean connected = connectivityManager.getActiveNetworkInfo() != null
+        && connectivityManager.getActiveNetworkInfo().isConnectedOrConnecting();
+    view.showNetworkError(connected);
+
+    if (!connected) {
+      return true;
+    }
+
+    if (e == null) {
+      return false;
+    }
     if (e instanceof UnknownHostException || e instanceof SocketTimeoutException) {
-      view.showNetworkError();
+      view.showNetworkError(true);
       return true;
     }
 
@@ -20,4 +38,3 @@ public class HttpErrorManager {
     return false;
   }
 }
-

@@ -23,4 +23,6 @@ public abstract class BasePresenter {
   }
 
   public abstract void onViewCreated(boolean isNewLaunch);
+
+  public abstract void handleNetworkStateChange();
 }

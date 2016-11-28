@@ -11,11 +11,11 @@ import lombok.ToString;
  */
 @Data @ToString public class PhotoListEntity {
 
-  String title;
-  String link;
-  String description;
-  String modified;
-  String generator;
+  //String title;
+  //String link;
+  //String description;
+  //String modified;
+  //String generator;
 
   @SerializedName("items") List<PhotoEntity> photoEntities = new ArrayList<>();
 }

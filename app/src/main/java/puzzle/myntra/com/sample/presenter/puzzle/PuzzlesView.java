@@ -5,29 +5,38 @@ import puzzle.myntra.com.sample.base.BaseView;
 import puzzle.myntra.com.sample.model.entity.PhotoEntity;
 
 public interface PuzzlesView extends BaseView {
-  void showNewsList(List<PhotoEntity> contacts);
 
-  void setupNewsView();
+  List<PhotoEntity> getImagesList();
+
+  void showImagesList(List<PhotoEntity> contacts);
+
+  void setupView();
 
   void showProgress();
 
-  void showNoNewsAvailableError();
+  void showNoImagesAvailableError();
 
-  void hideNewsList();
+  void hideImagesList();
 
   void hideProgress();
 
   void hideError();
 
-  boolean isNewsListAvailable();
-
-  void showNetworkError();
+  boolean isImagesListAvailable();
 
   void showHttpError(int errorBody);
 
-  void startGame();
-
-  void iGiveUp();
+  void updateTimer(int i);
 
   void reset();
+
+  void flip();
+
+  void nextHint(PhotoEntity photoEntity, int size);
+
+  void congrats();
+
+  void awesome();
+
+  void poorChoice();
 }
