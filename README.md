@@ -1,14 +1,14 @@
 Demo app to demontrate Dagger 2.0 & MVP
 
-Credit to 
-[  BlrDroidDevfestDemo ](https://github.com/abhaysood/BlrDroidDevfestDemo)
-[Android-CleanArchitecture](https://github.com/sudendrakl/Android-CleanArchitecture)
+Credit to <br/>
+[  BlrDroidDevfestDemo ](https://github.com/abhaysood/BlrDroidDevfestDemo) <br/>
+[Android-CleanArchitecture](https://github.com/sudendrakl/Android-CleanArchitecture) <br/>
 
 This is a sample images puzzle app, scrambled images, identify correct sequence in 9x9 grid
 
-15secs to remember images & scramble positions & flip, identify right image from hint provided
-Images are loaded from Flickr's public api
-[https://api.flickr.com/services/feeds/photos_public.gne](https://api.flickr.com/services/feeds/photos_public.gne?nojsoncallback=1&format=json&tags=evil,cats)
+15secs to remember images & scramble positions & flip, identify right image from hint provided <br/>
+Images are loaded from Flickr's public api <br/>
+[https://api.flickr.com/services/feeds/photos_public.gne](https://api.flickr.com/services/feeds/photos_public.gne?nojsoncallback=1&format=json&tags=evil,cats) <br/>
 
 ## Before you start
 This project requires the following
