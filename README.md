@@ -2,6 +2,7 @@ Demo app to demontrate Dagger 2.0 & MVP
 
 Credit to 
   https://github.com/abhaysood/BlrDroidDevfestDemo
+  
   https://github.com/sudendrakl/Android-CleanArchitecture
 
 This is a sample images puzzle app, scrambled images, identify correct sequence in 9x9 grid
