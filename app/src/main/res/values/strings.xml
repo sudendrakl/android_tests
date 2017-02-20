@@ -1,8 +1,17 @@
 <resources>
   <string name="app_name">Image Scramble</string>
 
-  <string name="hello_world">Hello world!</string>
-  <string name="action_settings">Settings</string>
-  <string name="title_activity_main">MainActivity</string>
   <string name="intro">\nScramble will show random pictures\nYou get 15sec to remember them\nFind the hidden picture from hint\n\nClick \'start\' to begin the game\n</string>
+  <string name="no_network">No network</string>
+  <string name="how_to_play">How to play</string>
+  <string name="start">Start</string>
+  <string name="make_sure_you_have_internet">**Make sure you have internet</string>
+  <string name="no_images_available">No images available</string>
+  <string name="hit_count"><![CDATA[<Hit Count>]]></string>
+  <string name="retry">Retry</string>
+  <string name="no_images">No images available, please check again later :-(</string>
+  <string name="check_nw">Please check n/w</string>
+  <string name="no_internet">No internet. Please check n/w</string>
+  <string name="something_wrong">Something went wrong, please try again later</string>
+  <string name="hit_count_int">Hit count:%1$d</string>
 </resources>

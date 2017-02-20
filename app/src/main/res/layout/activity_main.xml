@@ -18,7 +18,7 @@
   <android.support.v7.widget.AppCompatTextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="How to play"
+      android:text="@string/how_to_play"
       style="@style/Base.TextAppearance.AppCompat.Title"
       />
   <android.support.v7.widget.AppCompatTextView
@@ -31,13 +31,13 @@
       android:id="@+id/start_button"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="Start"
+      android:text="@string/start"
       style="@style/Base.Widget.AppCompat.Button.Colored"
       />
   <android.support.v7.widget.AppCompatTextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="**Make sure you have internet"
+      android:text="@string/make_sure_you_have_internet"
       style="@style/Base.TextAppearance.AppCompat.Caption"
       />
 </LinearLayout>

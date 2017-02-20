@@ -63,7 +63,7 @@
         android:id="@+id/error_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No images available"
+        android:text="@string/no_images_available"
         style="@style/Base.TextAppearance.AppCompat.Subhead"
         android:layout_gravity="center_horizontal|bottom"
         />
@@ -75,13 +75,13 @@
       android:layout_height="wrap_content"
       android:layout_centerHorizontal="true"
       android:layout_above="@+id/retry_button"
-      android:text="&lt;Hit Count&gt;"
+      android:text="@string/hit_count"
       style="@style/TextAppearance.AppCompat.Medium"/>
   <android.support.v7.widget.AppCompatButton
       android:id="@+id/retry_button"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Retry"
+      android:text="@string/retry"
       android:layout_gravity="bottom"
       android:layout_alignParentBottom="true"
       android:layout_centerHorizontal="true"

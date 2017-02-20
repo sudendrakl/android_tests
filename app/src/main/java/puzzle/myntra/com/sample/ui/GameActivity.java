@@ -28,6 +28,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.request.ImageRequest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import javax.inject.Inject;
 import puzzle.myntra.com.sample.R;
 import puzzle.myntra.com.sample.base.BaseActivity;
@@ -97,7 +98,7 @@ public class GameActivity extends BaseActivity<PuzzlesPresenter> implements Puzz
   @Override public void showNoImagesAvailableError() {
     puzzleContainer.setVisibility(View.GONE);
     errorView.setVisibility(View.VISIBLE);
-    errorTextView.setText("No images available, please check again later :-(");
+    errorTextView.setText(R.string.no_images);
   }
 
   @Override public void hideImagesList() {
@@ -126,7 +127,7 @@ public class GameActivity extends BaseActivity<PuzzlesPresenter> implements Puzz
       noNetwork.setVisibility(View.GONE);
       puzzleContainer.setVisibility(View.GONE);
       errorView.setVisibility(View.VISIBLE);
-      errorTextView.setText("Please check n/w");
+      errorTextView.setText(R.string.check_nw);
     }
   }
 
@@ -134,9 +135,9 @@ public class GameActivity extends BaseActivity<PuzzlesPresenter> implements Puzz
     puzzleContainer.setVisibility(View.GONE);
     errorView.setVisibility(View.VISIBLE);
     if(errorCode == 4) {
-      errorTextView.setText("No internet. Please check n/w");
+      errorTextView.setText(R.string.no_internet);
     } else {
-      errorTextView.setText("Something went wrong, please try again later");
+      errorTextView.setText(R.string.something_wrong);
     }
   }
 
@@ -178,7 +179,7 @@ public class GameActivity extends BaseActivity<PuzzlesPresenter> implements Puzz
       hintImageView.setController(draweeController);
       hintImageView.setVisibility(View.VISIBLE);
       int displayListSize = getImagesList().size();
-      counterTextView.setText(String.format("%d/%d", displayListSize - size, displayListSize));
+      counterTextView.setText(String.format(Locale.US, "%d/%d", displayListSize - size, displayListSize));
       Animation animation = AnimationUtils.loadAnimation(GameActivity.this, android.R.anim.fade_out);
       counterTextView.startAnimation(animation);
     });
@@ -243,7 +244,7 @@ public class GameActivity extends BaseActivity<PuzzlesPresenter> implements Puzz
           getRootView().post(() -> {
             imageGridAdapter.setAnimate(position);
             puzzlesPresenter.validate(position);
-            hitCount.setText("Hit count:"+puzzlesPresenter.incrementHitCount());
+            hitCount.setText(getString(R.string.hit_count_int, puzzlesPresenter.incrementHitCount()));
           });
           break;
         case Constants.BroadcastEvents.AllImagesLoaded:

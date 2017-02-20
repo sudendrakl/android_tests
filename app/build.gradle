@@ -4,7 +4,7 @@ apply plugin: 'me.tatarka.retrolambda'
 
 android {
   compileSdkVersion 25
-  buildToolsVersion "24.0.3"
+  buildToolsVersion "25.0.2"
 
   char[]  name = "FlickrPuzzleSample";
 
@@ -28,6 +28,9 @@ android {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
   }
+  lintOptions {
+    abortOnError false
+  }
 }
 
 dependencies {
@@ -36,6 +39,8 @@ dependencies {
 
   apt "org.androidannotations:androidannotations:3.3.2"
   compile "org.androidannotations:androidannotations-api:3.3.2"
+
+  compile 'com.android.support:support-annotations:25.1.1'
 
   compile 'com.squareup.okhttp3:okhttp:3.4.1'
   compile "com.squareup.okhttp3:logging-interceptor:3.4.1"
@@ -60,9 +65,9 @@ dependencies {
   compile 'com.google.dagger:dagger:2.5'
   provided 'javax.annotation:jsr250-api:1.0'
 
-  compile 'com.android.support:appcompat-v7:25.0.1'
-  compile 'com.android.support:support-v13:25.0.1'
-  compile 'com.android.support:design:25.0.1'
+  compile 'com.android.support:appcompat-v7:25.1.1'
+  compile 'com.android.support:support-v13:25.1.1'
+  compile 'com.android.support:design:25.1.1'
 
   compile "com.jakewharton:butterknife:7.0.1"
 
