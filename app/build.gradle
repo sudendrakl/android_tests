@@ -9,7 +9,7 @@ android {
   char[]  name = "FlickrPuzzleSample";
 
   defaultConfig {
-    applicationId "com.myntra.puzzle"
+    applicationId "com.di.puzzle"
     minSdkVersion 21
     targetSdkVersion 25
     versionCode 1
